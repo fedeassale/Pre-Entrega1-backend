@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "title": "Wireless Mouse",
     "description": "A smooth and responsive wireless mouse with ergonomic design.",
     "code": "WM-001",
@@ -14,7 +14,7 @@
     ]
   },
   {
-    "id": "2",
+    "id": 2,
     "title": "Bluetooth Headphones",
     "description": "High-quality Bluetooth headphones with noise-canceling feature.",
     "code": "BH-002",
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "id": "3",
+    "id": 3,
     "title": "Smartphone Stand",
     "description": "Adjustable smartphone stand compatible with all phone models.",
     "code": "SS-003",
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "id": "4",
+    "id": 4,
     "title": "Portable Charger",
     "description": "Compact and powerful portable charger with fast charging support.",
     "code": "PC-004",
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "id": "5",
+    "id": 5,
     "title": "Gaming Keyboard",
     "description": "RGB backlit mechanical gaming keyboard with customizable keys.",
     "code": "GK-005",
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "id": "6",
+    "id": 6,
     "title": "Fitness Tracker",
     "description": "Water-resistant fitness tracker with heart rate monitoring.",
     "code": "FT-006",
@@ -82,7 +82,7 @@
     ]
   },
   {
-    "id": "7",
+    "id": 7,
     "title": "Laptop Sleeve",
     "description": "Durable laptop sleeve with cushioned interior for maximum protection.",
     "code": "LS-007",
@@ -94,58 +94,5 @@
       "images/ls-007-front.jpg",
       "images/ls-007-inside.jpg"
     ]
-  },
-  {
-    "id": "8",
-    "title": "USB-C Hub",
-    "description": "Multiport USB-C hub with HDMI, USB 3.0, and Ethernet ports.",
-    "code": "UH-008",
-    "price": 49.99,
-    "status": true,
-    "stock": 85,
-    "category": "Electronics",
-    "thumbnails": [
-      "images/uh-008-front.jpg",
-      "images/uh-008-back.jpg"
-    ]
-  },
-  {
-    "id": "9",
-    "title": "Wireless Earbuds",
-    "description": "True wireless earbuds with high-fidelity sound and touch controls.",
-    "code": "WE-009",
-    "price": 79.99,
-    "status": true,
-    "stock": 90,
-    "category": "Electronics",
-    "thumbnails": [
-      "images/we-009-front.jpg",
-      "images/we-009-case.jpg"
-    ]
-  },
-  {
-    "id": "10",
-    "title": "Smartwatch",
-    "description": "Stylish smartwatch with multiple health and connectivity features.",
-    "code": "SW-010",
-    "price": 129.99,
-    "status": true,
-    "stock": 50,
-    "category": "Wearables",
-    "thumbnails": [
-      "images/sw-010-front.jpg",
-      "images/sw-010-back.jpg"
-    ]
-  },
-  {
-    "id": 11,
-    "title": "fede",
-    "description": "dfsfsdf",
-    "code": 12,
-    "price": 12,
-    "status": true,
-    "stock": 3,
-    "category": "tete",
-    "thumbnails": []
   }
 ]

@@ -49,11 +49,11 @@ class ProductManager {
 
     async addProduct({ title, description, price, status,category, code, stock, thumbnails = [] }) {
 
-        if (!title || !description || !price || status===undefined || !category || !code || !stock) {
-            console.log("All fields are required");
-            return;
+        //  if (!title || !description || !price || status===undefined || !category || !code || !stock) {
+        //      console.log("All fields are required");
+        //     return;
             
-        }
+        //  }
 
         if (this.products.some(item => item.code === code)) {
             console.log("The code must be unique");
