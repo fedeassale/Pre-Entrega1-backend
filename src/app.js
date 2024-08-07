@@ -14,7 +14,7 @@ app.engine("handlebars",engine());
 app.set("view engine","handlebars");
 app.set("views", "./src/views");
 
-app.use("/",productRouter);
+app.use("/api/products",productRouter);
 
 app.use("/api/carts",cartsRouter);
 
@@ -38,12 +38,10 @@ io.on("connection", async(socket)=>{
          await manager.deleteProduct(id);
 
          io.sockets.emit("productos", await manager.getProducts());
-
+        });
     socket.on("addProduct", async (product) => {
-            console.log(product,"estoy atras")
             await manager.addProduct(product);
             io.sockets.emit("productos", await manager.getProducts());
-        });
     })
  })
 

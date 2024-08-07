@@ -2,9 +2,7 @@ const socket = io();
 
 socket.on("productos", (data)=>{
     renderProductos(data)
-    // console.log(data)
 })
-
 
 const renderProductos = (productos) =>{
     const contenedorProductos = document.getElementById("product-list")
@@ -12,11 +10,14 @@ const renderProductos = (productos) =>{
 
 productos.forEach((producto) => {
     const card = document.createElement("div")
+    
     card.innerHTML = `
-    <p>${producto.id}<p>
-    <h2>${producto.title}</h2>
-    <p>Precio: $${producto.price}</p>
-    <button> Eliminar </button> `
+    <div class="cardReal" >
+    <h3 class="cardTitulo centrar-text">${producto.title}</h3>
+    <p class="cardDescription centrar-text">${producto.description}</p>
+    <p class="cardPrice centrar-text">$${producto.price}</p>
+    <button class="cardButton centrar-text"> Eliminar </button>
+    </div> `
 
     contenedorProductos.appendChild(card)
 
@@ -53,5 +54,4 @@ productForm.addEventListener('submit', (e) => {
     };
     socket.emit("addProduct", product);
     productForm.reset();
-    console.log(product,"estoy en el front")
 });
