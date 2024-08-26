@@ -4,6 +4,7 @@ import cartsRouter from "./router/carts.route.js";
 import viewsRouter from "./router/views.router.js";
 import  { Server } from "socket.io";
 import {engine} from "express-handlebars";
+import "./database.js";
 const app = express(); 
 const PUERTO = 8080;
  
@@ -24,8 +25,8 @@ const httpServer= app.listen(PUERTO, () => {
     console.log(`Escuchando en el http://localhost:${PUERTO}`); 
 })
 
-import ProductManager from "./managers/product-manager.js";
-const manager = new ProductManager("./src/data/productos.json");
+import ProductManager from "./dao/db/product-manager-db.js";
+const manager = new ProductManager();
 
 const io = new Server(httpServer);
 
