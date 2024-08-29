@@ -4,7 +4,7 @@ import CartModel from '../dao/models/carts.model.js'
 import CartManager from "../dao/db/cart-manager-db.js";
 const cartManager = new CartManager();
 
-//Listar carritos con populate. GET localhost:8080/api/carts
+
 router.get('/', async (req, res)=>{
     try {
         const allCarts = await CartModel.find().populate('products.product')
@@ -80,7 +80,7 @@ router.put("/:cid/products/:pid", async (req, res) => {
             const productId = req.params.pid;
             const { quantity } = req.body;
     
-            // Llama al manager para actualizar la cantidad del producto
+            
             await cartManager.updateProductQuantity(carritoId, productId, quantity);
     
             res.json({ message: "Product quantity updated successfully" });
@@ -88,7 +88,7 @@ router.put("/:cid/products/:pid", async (req, res) => {
             res.status(500).send(error.message);
         }
     });
-// este anda mas o menos
+
 router.put("/:cid", async (req, res) => {
         try {
             const  carritoId  = req.params.cid;

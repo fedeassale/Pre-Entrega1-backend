@@ -4,8 +4,6 @@ import ProductModels from "../models/product.model.js"
 class ProductManager {
     async getProducts({ limit = 15, page = 1, sort, query } = {}) {
         try {
-            // const arrayProducts = await ProductModels.find()
-            // return arrayProducts;
             const skip = (page - 1) * limit;
 
             let queryOptions = {};

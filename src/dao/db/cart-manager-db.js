@@ -14,7 +14,10 @@ class CartManager {
 
     async getCarritoById(id) {
         try {
-           const carrito = await CartModel.findById(id);
+           const carrito = await CartModel.findById(id).populate({
+            path: 'products.product',
+            select: 'id title price quantity'
+        });
            if(!carrito){
             console.log("no existe el carrito que buscas");
            }
@@ -59,22 +62,9 @@ class CartManager {
             return { error: 'Product not found in cart' };
         }
     } catch (error) {
-        //console.log('error deleting products in cart')
         throw error
     }
 };
-
-// async deleteCartById(id) {
-//     try {
-//         const result = await CartModel.findByIdAndDelete(id);
-//         !result && (() => { throw new Error("Carrito no encontrado"); })();
-
-//         return result;
-//     } catch (error) {
-//         console.error("Error al eliminar el carrito por id:", error);
-//         throw error;
-//     }
-// }
 
 async clearCart(cartId) {
     const cart = await CartModel.findById(cartId);
@@ -108,7 +98,7 @@ async updateProductQuantity(carritoId, productId, quantity) {
     await cart.save();
 };
 
-//este anada mas o menos
+
 async updateCart(carritoId, updatedProducts) {
     const cart = await CartModel.findById(carritoId);
 
@@ -116,18 +106,14 @@ async updateCart(carritoId, updatedProducts) {
         throw new Error('Carrito no encontrado');
     }
 
-    // Reemplaza los productos actuales con el nuevo array
+    
     cart.products = updatedProducts;
 
-    // Guarda los cambios en el carrito
+    
     return await cart.save();
 };
 
 
 }
-
-
-
-//aca falta todo lo extra que necesitamos hacer para la entrega final
 
 export default CartManager;

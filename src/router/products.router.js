@@ -17,13 +17,6 @@ router.get("/", async (req, res) => {
             sort,
             query,
         });
-        // if(limit){
-        //     res.send(arrayProducts.slice(0,limit));   
-        // }else{
-        //     const response = {
-        //         status: "success",
-        //         data: arrayProducts
-        //      }
              res.json({
             status: 'success',
             payload: products,
