@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { query, Router } from "express";
 const router = Router(); 
 import ProductManager from "../dao/db/product-manager-db.js";
 
@@ -6,16 +6,37 @@ const manager = new ProductManager();
 
 
 router.get("/", async (req, res) => {
-    const limit =req.query.limit;
+    
 
     try{
-        const arrayProducts = await manager.getProducts();
-        if(limit){
-            res.send(arrayProducts.slice(0,limit));   
-        }else{
-            res.send(arrayProducts); 
+        const { limit = 10, page = 1, sort, query } = req.query;
+
+        const products = await manager.getProducts({
+            limit: parseInt(limit),
+            page: parseInt(page),
+            sort,
+            query,
+        });
+        // if(limit){
+        //     res.send(arrayProducts.slice(0,limit));   
+        // }else{
+        //     const response = {
+        //         status: "success",
+        //         data: arrayProducts
+        //      }
+             res.json({
+            status: 'success',
+            payload: products,
+            totalPages: products.totalPages,
+            prevPage: products.prevPage,
+            nextPage: products.nextPage,
+            page: products.page,
+            hasPrevPage: products.hasPrevPage,
+            hasNextPage: products.hasNextPage,
+            prevLink: products.hasPrevPage ? `/api/products?limit=${limit}&page=${products.prevPage}&sort=${sort}&query=${query}` : null,
+            nextLink: products.hasNextPage ? `/api/products?limit=${limit}&page=${products.nextPage}&sort=${sort}&query=${query}` : null,
+             })
         }
-    }
     catch(error){
         res.status(500).send(error.message);
     }
@@ -28,6 +49,7 @@ router.get("/:pid", async (req, res) => {
         if(!product) {
             res.send("product not found"); 
         } else {
+            
             res.send(product); 
         }
     } catch (error) {
@@ -59,10 +81,14 @@ router.delete("/:pid",async(req,res)=>{
     try {
         const productId = req.params.pid;
         await manager.deleteProduct(productId);
-        res.json({message:"Product deleted successfully"})        
+        res.json({message:"Product deleted successfully"});
     } catch (error) {
         res.status(500).send(error.message);        
     }
 });
+
+
+
+
 
 export default router;

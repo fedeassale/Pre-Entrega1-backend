@@ -7,7 +7,18 @@
         <h2>{{this.title}}</h2>
         <figure>{{this.description}}</figure>
         <p>{{this.price}}</p>
-        <button>comprar</button>
+        <p>{{this.category}}</p>
+        <button>Agregar al Carrito</button>
     </div>
     {{/each}}
 </div>
+
+{{#if hasPrevPage}}
+<a href="/products?page={{prevPage}}">Anterior</a>
+{{/if}}
+
+{{#if hasNextPage}}
+<a href="/products?page={{nextPage}}">Siguiente</a>
+{{/if}}
+
+<p>{{currentPage}} / {{totalPages}} </p>
